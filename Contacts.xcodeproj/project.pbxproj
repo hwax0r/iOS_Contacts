@@ -24,6 +24,7 @@
 		CDE7EA9B27618515000107CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDE7EA9E27618515000107CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDE7EAA027618515000107CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDE7EAA72763F1E5000107CB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		CDE7EA8627618514000107CB = {
 			isa = PBXGroup;
 			children = (
+				CDE7EAA72763F1E5000107CB /* README.md */,
 				CDE7EA9127618514000107CB /* Contacts */,
 				CDE7EA9027618514000107CB /* Products */,
 			);

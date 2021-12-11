@@ -9,11 +9,50 @@ import UIKit
 
 class ViewController: UIViewController {
     private var contacts: [ContactProtocol] = []
+    
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadContacts()
+    }
+    
+    @IBAction func showNewContactAlert() {
+        // создание Alert Controller
+        let alertController = UIAlertController(title: "Создайте новый контакт",
+                                                message: "Введите имя и телефон",
+                                                preferredStyle: .alert)
+        // Добавляем первое текстовое поле в Alert Controller
+        alertController.addTextField{ textField in
+            textField.placeholder = "Имя"
+        }
+        // Добавляем второе текстовое поле в Alert Controller
+        alertController.addTextField{ textField in
+            textField.placeholder = "Номер телефона"
+        }
+        // создаём конопку создания контакта
+        let createButton = UIAlertAction(title: "Создать", style: .default) { _ in
+            guard let contactName = alertController.textFields?[0].text,
+                  let contectPhone = alertController.textFields?[1].text else {
+                return
+            }
+            // создаём новый контакт
+            let contact = Contact(title: contactName, phone: contectPhone)
+            self.contacts.append(contact)
+            self.tableView.reloadData()
+        }
+        // Кнопка отмена
+        let cancelButton = UIAlertAction(title: "Отмена",
+                                         style: .cancel,
+                                         handler: nil)
+        
+        // Добавляем кнопки в Alert Controller
+        alertController.addAction(createButton)
+        alertController.addAction(cancelButton)
+        
+        // отображаем Alert Controller
+        self.present(alertController, animated: true, completion: nil)
     }
 
     private func loadContacts() {

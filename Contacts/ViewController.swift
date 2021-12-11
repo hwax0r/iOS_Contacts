@@ -8,18 +8,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private var contacts: [ContactProtocol] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        loadContacts()
     }
 
-
+    private func loadContacts() {
+        contacts.append(Contact(title: "Валя Дизайнер", phone: "+77658330945"))
+        contacts.append(Contact(title: "Стив Джобс", phone: "+14089733091"))
+        contacts.append(Contact(title: "Антон Флексер", phone: "+76664442200"))
+        contacts.sort{$0.title < $1.title}
+    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,12 +46,18 @@ extension ViewController: UITableViewDataSource {
     
     private func configure(cell: inout UITableViewCell, for indexPath: IndexPath) {
         guard #available(iOS 14, *) else {
-            cell.textLabel?.text = "Строка \(indexPath.row)"
+            // имя контакта
+            cell.textLabel?.text = contacts[indexPath.row].title
+            // номер телефона контакта
+            cell.detailTextLabel?.text = contacts[indexPath.row].phone
             return
         }
         
         var configuration = cell.defaultContentConfiguration()
-        configuration.text = "Строка \(indexPath.row)"
+        // имя контакта
+        configuration.text = contacts[indexPath.row].title
+        // номер телефона контакта
+        configuration.secondaryText = contacts[indexPath.row].phone
         cell.contentConfiguration = configuration
     }
 }

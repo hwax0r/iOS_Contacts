@@ -9,12 +9,12 @@ import Foundation
 
 protocol ContactProtocol {
     /// Имя
-    var name: String { get set }
+    var title: String { get set }
     /// Номер телефона
     var phone: String { get set }
 }
 
 struct Contact: ContactProtocol {
-    var name: String
+    var title: String
     var phone: String
 }

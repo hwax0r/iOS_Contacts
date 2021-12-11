@@ -23,28 +23,26 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // попытка загрузки переиспользуемой ячейки
-        guard var cell = tableView.dequeueReusableCell(withIdentifier: "ContactCellIdentifier") else {
+        var cell: UITableViewCell
+        
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "ContactCellIdentifier") {
+            print("Используем старую ячейку для строки: \(indexPath.row)")
+            cell = reuseCell
+        } else {
             print("Создаём новую ячейку для строки: \(indexPath.row)")
-            
-            // получаем содержимое ячейки
-            var newCell = UITableViewCell(style: .default, reuseIdentifier: "ContactCellIdentifier")
-            
-            // конфигурируем ячейку
-            configure(cell: &newCell, for: indexPath)
-            
-            // возвражаем сконфигурированный экземпляр ячейки
-            return newCell
+            cell = UITableViewCell(style: .default, reuseIdentifier: "ContactCellIdentifier")
         }
         
-        print("Используем старую ячейку для строки с индексом: \(indexPath.row)")
-        // конфигурируем ячейку
         configure(cell: &cell, for: indexPath)
-        // возвражаем сконфигурированный экземпляр ячейки
         return cell
     }
     
     private func configure(cell: inout UITableViewCell, for indexPath: IndexPath) {
+        guard #available(iOS 14, *) else {
+            cell.textLabel?.text = "Строка \(indexPath.row)"
+            return
+        }
+        
         var configuration = cell.defaultContentConfiguration()
         configuration.text = "Строка \(indexPath.row)"
         cell.contentConfiguration = configuration

@@ -8,7 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var contacts: [ContactProtocol] = []
+    private var contacts: [ContactProtocol] = [] {
+        didSet {
+            contacts.sort{ $0.title < $1.title }
+        }
+    }
     
     @IBOutlet var tableView: UITableView!
 
@@ -34,11 +38,11 @@ class ViewController: UIViewController {
         // создаём конопку создания контакта
         let createButton = UIAlertAction(title: "Создать", style: .default) { _ in
             guard let contactName = alertController.textFields?[0].text,
-                  let contectPhone = alertController.textFields?[1].text else {
+                  let contactPhone = alertController.textFields?[1].text else {
                 return
             }
             // создаём новый контакт
-            let contact = Contact(title: contactName, phone: contectPhone)
+            let contact = Contact(title: contactName, phone: contactPhone)
             self.contacts.append(contact)
             self.tableView.reloadData()
         }
@@ -59,7 +63,6 @@ class ViewController: UIViewController {
         contacts.append(Contact(title: "Валя Дизайнер", phone: "+77658330945"))
         contacts.append(Contact(title: "Стив Джобс", phone: "+14089733091"))
         contacts.append(Contact(title: "Антон Флексер", phone: "+76664442200"))
-        contacts.sort{$0.title < $1.title}
     }
 }
 

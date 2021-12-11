@@ -17,27 +17,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EAg-3h-4S6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="pxP-qz-EUz"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Obl-L3-B6n"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lh-GF-lDP">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TNx-vI-KLQ"/>
+                                    <barButtonItem title="Создать контакт" id="tAK-Sa-cWO"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Lh-GF-lDP" secondAttribute="trailing" id="6A9-08-eWy"/>
+                            <constraint firstItem="2Lh-GF-lDP" firstAttribute="top" secondItem="EAg-3h-4S6" secondAttribute="bottom" id="E6X-Fw-b0z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Lh-GF-lDP" secondAttribute="bottom" id="GGN-rw-yoF"/>
                             <constraint firstItem="EAg-3h-4S6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="I7d-k3-VrM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EAg-3h-4S6" secondAttribute="trailing" id="NME-Ax-hbP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EAg-3h-4S6" secondAttribute="bottom" id="QAn-ni-mOm"/>
+                            <constraint firstItem="2Lh-GF-lDP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aWe-2I-B5S"/>
                             <constraint firstItem="EAg-3h-4S6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b8B-21-1tQ"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="86"/>
+            <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>

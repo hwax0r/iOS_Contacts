@@ -15,3 +15,8 @@ The main idea is to use UITableView to develop Contacts app.
                 
         
 * Storyboards
+    * Constraints
+
+* User Defaults *(As long-term data storage)*
+
+Data Storage based in User Defaults stores contacts data locally only after install and untill it deleted. So it is not suitable for real tasks. Even for this app functionality.
